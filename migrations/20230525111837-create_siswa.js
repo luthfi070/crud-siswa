@@ -12,6 +12,8 @@ module.exports = {
     await queryInterface.createTable("students", {
       nama: Sequelize.STRING,
     });
+
+    await queryInterface.drop;
   },
 
   async down(queryInterface, Sequelize) {

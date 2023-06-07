@@ -3,9 +3,9 @@ const siswaService = require("../services/siswaService");
 
 const router = express.Router();
 
-router.get("/api/siswa", (req, res) => {
+router.post("/api/siswa", (req, res) => {
   try {
-    res.send(siswaService.getAll(req));
+    res.send(siswaService.createSiswa(req));
   } catch (err) {
     next(err);
   }
