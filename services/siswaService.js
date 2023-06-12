@@ -2,10 +2,18 @@ const { Siswa } = require("../models");
 const midtransClient = require("midtrans-client");
 const uuid = require("uuid");
 
+const uploadToCloudinary = require("../cloudinary/cloudinary");
+
 exports.createSiswa = async (req) => {
   const { body } = req;
 
   console.log(req.body);
+
+  const fotoArtikel = await uploadToCloudinary(req.files["fotoArtikel"][0]);
+  const fotoLogo = await uploadToCloudinary(req.files["fotoLogo"][0]);
+
+  body.nama = fotoArtikel;
+
   const createSiswa = await Siswa.create({ id: 1, nama: body.nama });
 
   return { createSiswa };
